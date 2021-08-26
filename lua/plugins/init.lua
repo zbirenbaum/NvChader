@@ -325,4 +325,15 @@ return packer.startup(function()
          require("core.mappings").vim_fugitive()
       end,
    }
+  use {
+    "ggandor/lightspeed.nvim",
+    disable = not plugin_status.blankline,
+    event = "BufRead",
+    config = function()
+      require("plugins.configs.lightspeed")
+    end,
+  }
+  use {
+    "oberblastmeister/termwrapper.nvim"
+  }
 end)

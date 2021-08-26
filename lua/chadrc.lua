@@ -1,11 +1,14 @@
 -- IMPORTANT NOTE : This is the user config, can be edited. Will be preserved if updated with internal updater
 
+vim.g.python3_host_prog="/home/zach/.virtualenvs/py3nvim/bin/python"
+vim.g.python_host_prog="/home/zach/.virtualenvs/py2nvim/bin/python"
+
 local M = {}
 M.ui, M.options, M.plugin_status, M.mappings, M.custom = {}, {}, {}, {}, {}
 
 -- non plugin ui configs, available without any plugins
 M.ui = {
-   italic_comments = false,
+   italic_comments = true,
 
    -- theme to be used, to see all available themes, open the theme switcher by <leader> + th
    theme = "onedark",
@@ -92,6 +95,11 @@ M.plugin_status = {
    truezen = true, -- no distraction mode for nvim
    vim_fugitive = true, -- git in nvim
    vim_matchup = true, -- % magic, match it but improved
+
+--My Plugins
+   lightspeed = true,
+   termwrapper = true,
+
 }
 
 -- mappings -- don't use a single keymap twice --
@@ -202,8 +210,11 @@ M.mappings.plugin = {
 -- keys: multiple keys allowed, same synxtax as modes
 -- cmd:  for vim commands, must use ':' at start and add <CR> at the end if want to execute
 -- options: see :h nvim_set_keymap() opts section
-M.custom.mappings = {
+--vim.map("n", "<C-x>", [[<Cmd> Ttoggle <CR>]], vim.opt) --  bottt
+--vim.map("t", "<C-x>", [[<C-\><C-n> <Cmd> Ttoggle <CR>]], vim.opt) --  bottt
    -- clear_all = {
+M.custom.mappings = {
+--toggle termwrapper from normie and term mode
    --    "n",
    --    "<leader>cc",
    --    "gg0vG$d",
