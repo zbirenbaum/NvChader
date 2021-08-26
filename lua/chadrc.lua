@@ -202,6 +202,8 @@ M.mappings.plugin = {
    },
 }
 
+local opt = {}
+--toggle termwrapper from normie and term mode
 -- user custom mappings
 -- e.g: name = { "mode" , "keys" , "cmd" , "options"}
 -- name: can be empty or something unique with repect to other custom mappings
@@ -215,6 +217,23 @@ M.mappings.plugin = {
    -- clear_all = {
 M.custom.mappings = {
 --toggle termwrapper from normie and term mode
+--map('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>', opts)
+--map('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
+--map("n", "<C-l>", [[<Cmd>vnew term://zsh <CR>]], opt) -- over right
+--map("n", "<C-x>", [[<Cmd> split term://zsh | resize 10 <CR>]], opt) --  bottt
+  n_ttoggle = {
+    "n",
+    "<C-x>",
+    "<Cmd> Ttoggle <CR>"
+  },
+    
+  t_ttoggle = {
+    "t",
+    "<C-x>",
+    "<C-\\><C-n> <Cmd> Ttoggle <CR>"
+  },
+    
+--map('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
    --    "n",
    --    "<leader>cc",
    --    "gg0vG$d",
