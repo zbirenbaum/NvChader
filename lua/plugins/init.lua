@@ -46,7 +46,7 @@ return packer.startup(function()
       disable = not plugin_status.feline,
       after = "nvim-web-devicons",
       config = function()
-         require "plugins.configs.statusline"
+         require "plugins.configs.customline"
       end,
    }
 
