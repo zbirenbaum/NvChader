@@ -366,4 +366,12 @@ return packer.startup(function()
       require("plugins.configs.termwrapper")
     end,
   }
+  use {
+    "numToStr/FTerm.nvim",
+    disable = not plugin_status.fterm,
+    event = "BufRead",
+    config = function()
+      require("plugins.configs.fterm")
+    end,
+  }
 end)

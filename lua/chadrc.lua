@@ -91,14 +91,15 @@ M.plugin_status = {
    lspsignature = true, -- lsp enhancements
    neoformat = true, -- universal formatter
    neoscroll = true, -- smooth scroll
-   telescope_media = false, -- see media files in telescope picker
+   telescope_media = true, -- see media files in telescope picker
    truezen = false, -- no distraction mode for nvim
-   vim_fugitive = false, -- git in nvim
+   vim_fugitive = true, -- git in nvim
    vim_matchup = true, -- % magic, match it but improved
 
 --My Plugins
    lightspeed = true,
    termwrapper = true,
+   fterm = true,
 
 }
 
@@ -231,13 +232,21 @@ M.custom.mappings = {
     "<C-x>",
     "<Cmd> Ttoggle <CR>"
   },
-    
   t_ttoggle = {
     "t",
     "<C-x>",
     "<C-\\><C-n> <Cmd> Ttoggle <CR>"
   },
-    
+  ftn_ttoggle = {
+    "n",
+    "<A-i>",
+    "<C-n><CMD>lua require('FTerm').toggle()<CR>"
+  },
+  ftt_ttoggle = {
+    "t",
+    "<A-i>",
+    "<C-\\><C-n><CMD>lua require('FTerm').toggle()<CR>"
+  },
 --map('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
    --    "n",
    --    "<leader>cc",
