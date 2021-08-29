@@ -60,7 +60,7 @@ M.options = {
    smartindent = true,
    tabstop = 8, -- Number of spaces that a <Tab> in the file counts for
    timeoutlen = 400,
-   relativenumber = false,
+   relativenumber = true,
    ruler = false,
    updatetime = 250,
    -- used for updater
