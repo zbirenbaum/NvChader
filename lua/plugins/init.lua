@@ -150,6 +150,7 @@ return packer.startup(function()
       opt = true,
       setup = function()
          require("core.utils").packer_lazy_load "vim-matchup"
+         vim.cmd([[let g:matchup_matchparen_offscreen = {'method': 'popup'}]])
       end,
    }
 
