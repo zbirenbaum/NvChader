@@ -181,8 +181,13 @@ return packer.startup(function()
    -- load luasnips + cmp related in insert mode only
 
    use {
-      "hrsh7th/nvim-cmp",
+      "rafamadriz/friendly-snippets",
       event = "InsertEnter",
+   }
+
+   use {
+      "hrsh7th/nvim-cmp",
+      after = "friendly-snippets",
       config = function()
          require "plugins.configs.cmp"
       end,
@@ -217,11 +222,6 @@ return packer.startup(function()
       after = "cmp-nvim-lsp",
    }
 
-   use {
-      "rafamadriz/friendly-snippets",
-      after = "cmp-buffer",
-   }
-
    -- misc plugins
    use {
       "windwp/nvim-autopairs",
@@ -234,13 +234,6 @@ return packer.startup(function()
    use {
       "glepnir/dashboard-nvim",
       disable = not plugin_status.dashboard,
-      cmd = {
-         "Dashboard",
-         "DashboardNewFile",
-         "DashboardJumpMarks",
-         "SessionLoad",
-         "SessionSave",
-      },
       config = function()
          require "plugins.configs.dashboard"
       end,
