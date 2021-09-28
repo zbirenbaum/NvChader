@@ -42,7 +42,7 @@ local icon_styles = {
    },
 }
 
-local user_statusline_style = require("core.utils").load_config().ui.plugin.statusline.style
+local user_statusline_style = require("core.utils").load_config().plugins.options.statusline.style
 local statusline_style = icon_styles[user_statusline_style]
 
 -- Initialize the components table
@@ -55,9 +55,6 @@ local components = {
 table.insert(components.active, {})
 table.insert(components.active, {})
 table.insert(components.active, {})
-table.insert(components.inactive, {})
-table.insert(components.inactive, {})
-table.insert(components.inactive, {})
 
 components.active[1][1] = {
    provider = statusline_style.main_icon,
@@ -84,6 +81,9 @@ components.active[1][2] = {
       end
       return " " .. icon .. " " .. filename .. " "
    end,
+   enabled = function(winid)
+      return vim.api.nvim_win_get_width(winid) > 70
+   end,
    hl = {
       fg = colors.white,
       bg = colors.lightbg,
@@ -98,14 +98,21 @@ components.active[1][3] = {
       return "  " .. dir_name .. " "
    end,
 
+   enabled = function(winid)
+      return vim.api.nvim_win_get_width(winid) > 80
+   end,
+
    hl = {
       fg = colors.grey_fg2,
       bg = colors.lightbg2,
    },
-   right_sep = { str = statusline_style.right, hi = {
-      fg = colors.lightbg2,
-      bg = colors.statusline_bg,
-   } },
+   right_sep = {
+      str = statusline_style.right,
+      hi = {
+         fg = colors.lightbg2,
+         bg = colors.statusline_bg,
+      },
+   },
 }
 
 components.active[1][4] = {
@@ -140,6 +147,7 @@ components.active[1][7] = {
    enabled = function()
       return lsp.diagnostics_exist "Error"
    end,
+
    hl = { fg = colors.red },
    icon = "  ",
 }
@@ -201,6 +209,9 @@ components.active[2][1] = {
       end
       return ""
    end,
+   enabled = function(winid)
+      return vim.api.nvim_win_get_width(winid) > 80
+   end,
    hl = { fg = colors.green },
 }
 
@@ -212,11 +223,17 @@ components.active[3][1] = {
          return ""
       end
    end,
+   enabled = function(winid)
+      return vim.api.nvim_win_get_width(winid) > 70
+   end,
    hl = { fg = colors.grey_fg2, bg = colors.statusline_bg },
 }
 
 components.active[3][2] = {
    provider = "git_branch",
+   enabled = function(winid)
+      return vim.api.nvim_win_get_width(winid) > 70
+   end,
    hl = {
       fg = colors.grey_fg2,
       bg = colors.statusline_bg,
@@ -291,6 +308,9 @@ components.active[3][6] = {
 
 components.active[3][7] = {
    provider = statusline_style.left,
+   enabled = function(winid)
+      return vim.api.nvim_win_get_width(winid) > 90
+   end,
    hl = {
       fg = colors.grey,
       bg = colors.one_bg,
@@ -299,6 +319,9 @@ components.active[3][7] = {
 
 components.active[3][8] = {
    provider = statusline_style.left,
+   enabled = function(winid)
+      return vim.api.nvim_win_get_width(winid) > 90
+   end,
    hl = {
       fg = colors.green,
       bg = colors.grey,
@@ -307,6 +330,9 @@ components.active[3][8] = {
 
 components.active[3][9] = {
    provider = statusline_style.position_icon,
+   enabled = function(winid)
+      return vim.api.nvim_win_get_width(winid) > 90
+   end,
    hl = {
       fg = colors.black,
       bg = colors.green,
@@ -327,9 +353,28 @@ components.active[3][10] = {
       return " " .. result .. "%% "
    end,
 
+   enabled = function(winid)
+      return vim.api.nvim_win_get_width(winid) > 90
+   end,
+
    hl = {
       fg = colors.green,
       bg = colors.one_bg,
+   },
+}
+
+local InactiveStatusHL = {
+   fg = colors.one_bg2,
+   bg = "NONE",
+   style = "underline",
+}
+
+components.inactive = {
+   {
+      {
+         provider = " ",
+         hl = InactiveStatusHL,
+      },
    },
 }
 
