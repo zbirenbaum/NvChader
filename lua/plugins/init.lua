@@ -15,6 +15,9 @@ return packer.startup(function()
    use {
       "Nvchad/extensions",
    }
+   use{
+     "gennaro-tedesco/nvim-jqx",
+   }
 
    use {
       "nvim-lua/plenary.nvim",
@@ -46,7 +49,7 @@ return packer.startup(function()
       disable = not plugin_status.feline,
       after = "nvim-web-devicons",
       config = function()
-         require "plugins.configs.customline"
+         require "plugins.configs.statusline"
       end,
    }
 
@@ -131,7 +134,27 @@ return packer.startup(function()
          require "plugins.configs.lspconfig"
       end,
    }
-
+--    use {
+--      "ms-jpq/coq_nvim",
+--       opt = true,
+--       diable = not plugin_status.coq_nvim,
+--       after = "nvim-lspconfig",
+--       config = function()
+--         require("plugins.configs.coq")
+--         --vim.cmd('COQnow -s')
+--       end,
+--    }
+-- 
+--    use {
+--      "ms-jpq/coq.artifacts",
+--       opt = true,
+--       diable = not plugin_status.coq_nvim,
+--       after = "coq_nvim",
+--       -- config = function()
+--       --   require("plugins.configs.coq")
+--       --   --vim.cmd('COQnow -s')
+--       -- end,
+--    }
    use {
       "ray-x/lsp_signature.nvim",
       disable = not plugin_status.lspsignature,

@@ -87,18 +87,25 @@ M.plugin_status = {
    esc_insertmode = true, -- escape from insert mode using custom keys
    feline = true, -- statusline
    gitsigns = true, -- gitsigns in statusline
-   lspsignature = true, -- lsp enhancements
+
+
+   --if coq_nvim is true, set this to false
+--   lspsignature = true, -- lsp enhancements
+
    neoformat = true, -- universal formatter
    neoscroll = true, -- smooth scroll
    telescope_media = true, -- see media files in telescope picker
    truezen = false, -- no distraction mode for nvim
    vim_fugitive = true, -- git in nvim
    vim_matchup = true, -- % magic, match it but improved
+   cmp=true,
 
 --My Plugins
    lightspeed = true,
    termwrapper = true,
    fterm = true,
+   coq_nvim = false,
+   --if coq_nvim is true, set these to false
 
 }
 
@@ -246,6 +253,11 @@ M.custom.mappings = {
     "<A-i>",
     "<C-\\><C-n><CMD>lua require('FTerm').toggle()<CR>"
   },
+  -- coq_tab = {
+  --   "i",
+  --   "<Tab>",
+  --   "<CMD>lua vim.cmd.pumvisible()?<C-n><CR>"
+  -- },
 --map('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
    --    "n",
    --    "<leader>cc",
@@ -256,7 +268,7 @@ M.custom.mappings = {
 M.plugins = {
    lspconfig = {
       -- servers = {"html", "cssls"}
-      servers = {},
+      servers = {"pyright", "lua"},
    },
 }
 

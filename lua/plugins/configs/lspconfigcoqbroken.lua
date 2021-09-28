@@ -1,6 +1,8 @@
 local present1, nvim_lsp = pcall(require, "lspconfig")
+local present2, coq = pcall(require, "coq")
+coq = require('coq')
 
-if not present1 then
+if not present1 or present2 then
   return
 end
 
@@ -39,34 +41,35 @@ local function on_attach(_, bufnr)
   buf_set_keymap("v", "<space>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>", opts)
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.preselectSupport = true
-capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
-capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
-capabilities.textDocument.completion.completionItem.deprecatedSupport = true
-capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
-capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = {
-    "documentation",
-    "detail",
-    "additionalTextEdits",
-  },
-}
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
+-- capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- capabilities.textDocument.completion.completionItem.preselectSupport = true
+-- capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+-- capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+-- capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+-- capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+-- capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
+-- capabilities.textDocument.completion.completionItem.resolveSupport = {
+--   properties = {
+--     "documentation",
+--     "detail",
+--     "additionalTextEdits",
+--   },
+-- }
 
 local servers = require("core.utils").load_config().plugins.lspconfig.servers
 
 for _, lsp in ipairs(servers) do
   if lsp ~= "lua" then
-    nvim_lsp[lsp].setup {
+    vim.cmd('COQnow')
+    nvim_lsp[lsp].setup{
       on_attach = on_attach,
-      capabilities = capabilities,
+      --capabilities = capabilities,
       root_dir = vim.loop.cwd,
-      flags = {
-        debounce_text_changes = 150,
-      },
+      --flags = {
+      -- debounce_text_changes = 150,
+      --},
     }
   elseif lsp == "lua" then
     require("plugins.configs.sumneko").setup_luaLsp(on_attach, capabilities) -- this will be removed soon after the custom hooks PR

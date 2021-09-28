@@ -117,14 +117,16 @@ M.signature = function()
       lspsignature.setup {
          bind = true,
          doc_lines = 2,
+         transparency=100,
          floating_window = true,
          fix_pos = true,
          hint_enable = true,
          hint_prefix = " ",
          hint_scheme = "String",
          hi_parameter = "Search",
-         max_height = 22,
-         max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
+         max_height = 2,
+         max_width = 10, -- max_width of signature floating_window, line will be wrapped if exceed max_width
+         floating_window_above_cur_line = true,
          handler_opts = {
             border = "single", -- double, single, shadow, none
          },
