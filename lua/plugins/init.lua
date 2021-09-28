@@ -323,44 +323,5 @@ return packer.startup(function()
          require("core.mappings").truezen()
       end,
    }
-   use {
-      "tpope/vim-fugitive",
-      disable = not plugin_status.vim_fugitive,
-      cmd = {
-         "Git",
-         "Gdiff",
-         "Gdiffsplit",
-         "Gvdiffsplit",
-         "Gwrite",
-         "Gw",
-      },
-      setup = function()
-         require("core.mappings").vim_fugitive()
-      end,
-   }
-  use {
-    "ggandor/lightspeed.nvim",
-    disable = not plugin_status.blankline,
-    event = "BufRead",
-    config = function()
-      require("plugins.configs.lightspeed")
-    end,
-  }
-  use {
-    "oberblastmeister/termwrapper.nvim",
-    disable = not plugin_status.termwrapper,
-    event = "BufRead",
-    config = function()
-      require("plugins.configs.termwrapper")
-    end,
-  }
-  use {
-    "numToStr/FTerm.nvim",
-    disable = not plugin_status.fterm,
-    event = "BufRead",
-    config = function()
-      require("plugins.configs.fterm")
-    end,
-  }
   require("core.hooks").run("install_plugins", use)
 end)
