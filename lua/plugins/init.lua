@@ -241,6 +241,11 @@ return packer.startup(function()
       after = "cmp-nvim-lsp",
    }
 
+   use {
+      "hrsh7th/cmp-path",
+      disable = not plugin_status.cmp,
+      after = "cmp-buffer",
+   }
    -- misc plugins
    use {
       "windwp/nvim-autopairs",
@@ -258,16 +263,6 @@ return packer.startup(function()
       end,
    }
 
-   use {
-      "sbdchd/neoformat",
-      disable = not plugin_status.neoformat,
-      cmd = "Neoformat",
-      setup = function()
-         require("core.mappings").neoformat()
-      end,
-   }
-
-   --   use "alvan/vim-closetag" -- for html autoclosing tag
    use {
       "terrortylor/nvim-comment",
       disable = not plugin_status.comment,
@@ -290,6 +285,7 @@ return packer.startup(function()
 
    use {
       "nvim-telescope/telescope.nvim",
+      module = "telescope",
       cmd = "Telescope",
       requires = {
          {
