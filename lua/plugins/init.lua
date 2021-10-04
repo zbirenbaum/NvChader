@@ -114,17 +114,6 @@ return packer.startup(function()
       end,
    }
 
-   -- smooth scroll
-   use {
-      "karb94/neoscroll.nvim",
-      disable = not status.neoscroll,
-      opt = true,
-      config = override_req("neoscroll", "(plugins.configs.others).neoscroll()"),
-      setup = function()
-         require("core.utils").packer_lazy_load "neoscroll.nvim"
-      end,
-   }
-
    -- lsp stuff
 
    use {
@@ -134,7 +123,7 @@ return packer.startup(function()
          require("core.utils").packer_lazy_load "nvim-lspconfig"
          -- reload the current file so lsp actually starts for it
          vim.defer_fn(function()
-            vim.cmd "silent! e %"
+            vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
          end, 0)
       end,
       config = override_req("lspconfig", "plugins.configs.lspconfig"),
@@ -174,16 +163,6 @@ return packer.startup(function()
       setup = function()
          require("core.utils").packer_lazy_load "vim-matchup"
          vim.cmd([[let g:matchup_matchparen_offscreen = {'method': 'popup'}]])
-      end,
-   }
-
-   -- load autosave only if its globally enabled
-   use {
-      disable = not status.autosave,
-      "Pocco81/AutoSave.nvim",
-      config = override_req("autosave", "(plugins.configs.others).autosave()"),
-      cond = function()
-         return require("core.utils").load_config().plugins.options.autosave == true
       end,
    }
 
@@ -276,6 +255,7 @@ return packer.startup(function()
    -- file managing , picker etc
    use {
       "kyazdani42/nvim-tree.lua",
+      disable = not status.nvimtree,
       cmd = { "NvimTreeToggle", "NvimTreeFocus" },
       config = override_req("nvim_tree", "plugins.configs.nvimtree"),
       setup = function()
