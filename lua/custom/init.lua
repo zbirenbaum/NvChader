@@ -7,60 +7,59 @@ local plugin_status = require("core.utils").load_config().plugins.plugin_status
 --print(dump(plugin_status))
 
 hooks.add("install_plugins", function(use)
-  
-  use {
-    "akinsho/toggleterm.nvim",
-    disable = not plugin_status.toggleterm,
-    event = "BufRead",
-    config = function()
-      require("custom.plugins.toggleterm")
-    end,
-  }
-  use {
-    "ggandor/lightspeed.nvim",
-    disable = not plugin_status.lightspeed,
-    event = "BufRead",
-    config = function()
-      require("custom.plugins.lightspeed")
-    end,
-  }
-  use {
-    "oberblastmeister/termwrapper.nvim",
-    disable = not plugin_status.termwrapper,
-    event = "BufRead",
-    config = function()
-      require("custom.plugins.termwrapper")
-    end,
-  }
+   use {
+      "akinsho/toggleterm.nvim",
+      disable = not plugin_status.toggleterm,
+      event = "BufRead",
+      config = function()
+         require "custom.plugins.toggleterm"
+      end,
+   }
+   use {
+      "ggandor/lightspeed.nvim",
+      disable = not plugin_status.lightspeed,
+      event = "BufRead",
+      config = function()
+         require "custom.plugins.lightspeed"
+      end,
+   }
+   use {
+      "oberblastmeister/termwrapper.nvim",
+      disable = not plugin_status.termwrapper,
+      event = "BufRead",
+      config = function()
+         require "custom.plugins.termwrapper"
+      end,
+   }
 end)
 hooks.add("setup_mappings", function(map)
    -- map("n", "<C-x>", "<CMD>Ttoggle<CR>", opt) -- example to delete the buffer
    -- map("t", "<C-x>", "<C-\\><C-n><CMD>Ttoggle<CR>", opt) -- example to delete the buffer
 end)
 
-  -- use {
-  --   "numToStr/FTerm.nvim",
-  --   disable = not plugin_status.fterm,
-  --   event = "BufRead",
-  --   config = function()
-  --     require("plugins.configs.fterm")
-  --   end,
-  -- }
-  -- use {
-  --     "tpope/vim-fugitive",
-  --     disable = not plugin_status.vim_fugitive,
-  --     cmd = {
-  --        "Git",
-  --        "Gdiff",
-  --        "Gdiffsplit",
-  --        "Gvdiffsplit",
-  --        "Gwrite",
-  --        "Gw",
-  --     },
-  --     setup = function()
-  --        require("core.mappings").vim_fugitive()
-  --     end,
-  -- }
+-- use {
+--   "numToStr/FTerm.nvim",
+--   disable = not plugin_status.fterm,
+--   event = "BufRead",
+--   config = function()
+--     require("plugins.configs.fterm")
+--   end,
+-- }
+-- use {
+--     "tpope/vim-fugitive",
+--     disable = not plugin_status.vim_fugitive,
+--     cmd = {
+--        "Git",
+--        "Gdiff",
+--        "Gdiffsplit",
+--        "Gvdiffsplit",
+--        "Gwrite",
+--        "Gw",
+--     },
+--     setup = function()
+--        require("core.mappings").vim_fugitive()
+--     end,
+-- }
 
 -- NOTE: To use this, make a copy with `cp example_init.lua init.lua`
 
@@ -89,7 +88,6 @@ end)
 -- NOTE: we heavily suggest using Packer's lazy loading (with the 'event' field)
 -- see: https://github.com/wbthomason/packer.nvim
 -- examples below:
-
 
 -- alternatively, put this in a sub-folder like "lua/custom/plugins/mkdir"
 -- then source it with

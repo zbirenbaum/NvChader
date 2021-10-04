@@ -16,7 +16,7 @@
 -- --map('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
 -- --map("n", "<C-l>", [[<Cmd>vnew term://zsh <CR>]], opt) -- over right
 -- --map("n", "<C-x>", [[<Cmd> split term://zsh | resize 10 <CR>]], opt) --  bottt
--- 
+--
 -- --legacied
 -- n_ttoggle = {
 --     "n",
@@ -49,5 +49,3 @@
 --    --    "gg0vG$d",
 --    -- },
 -- }
-
-

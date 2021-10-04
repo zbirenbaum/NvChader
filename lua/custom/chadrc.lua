@@ -1,7 +1,7 @@
 -- IMPORTANT NOTE : This is the user config, can be edited. Will be preserved if updated with internal updater
 
-vim.g.python3_host_prog="/home/zach/.virtualenvs/py3nvim/bin/python"
-vim.g.python_host_prog="/home/zach/.virtualenvs/py2nvim/bin/python"
+vim.g.python3_host_prog = "/home/zach/.virtualenvs/py3nvim/bin/python"
+vim.g.python_host_prog = "/home/zach/.virtualenvs/py2nvim/bin/python"
 
 local M = {}
 --M.ui, M.options, M.plugin_status, M.mappings, M.custom = {}, {}, {}, {}, {}
@@ -72,49 +72,48 @@ M.options = {
 
 -- enable and disable plugins (false for disable)
 M.plugins = {
-  plugin_status = {
-     autosave = false, -- to autosave files
-     blankline = true, -- beautified blank lines
-     bufferline = true, -- buffer shown as tabs
-     cheatsheet = true, -- fuzzy search your commands/keymappings
-     colorizer = true,
-     comment = true, -- universal commentor
-     dashboard = false, -- a nice looking dashboard
-     esc_insertmode = true, -- escape from insert mode using custom keys
-     feline = true, -- statusline
-     gitsigns = true, -- gitsigns in statusline
+   plugin_status = {
+      autosave = false, -- to autosave files
+      blankline = true, -- beautified blank lines
+      bufferline = true, -- buffer shown as tabs
+      cheatsheet = true, -- fuzzy search your commands/keymappings
+      colorizer = true,
+      comment = true, -- universal commentor
+      dashboard = false, -- a nice looking dashboard
+      esc_insertmode = true, -- escape from insert mode using custom keys
+      feline = true, -- statusline
+      gitsigns = true, -- gitsigns in statusline
 
+      --if coq_nvim is true, set this to false
+      --   lspsignature = true, -- lsp enhancements
 
-     --if coq_nvim is true, set this to false
-  --   lspsignature = true, -- lsp enhancements
+      neoformat = true, -- universal formatter
+      neoscroll = true, -- smooth scroll
+      telescope_media = true, -- see media files in telescope picker
+      truezen = false, -- no distraction mode for nvim
+      vim_fugitive = true, -- git in nvim
+      vim_matchup = true, -- % magic, match it but improved
+      cmp = true,
 
-     neoformat = true, -- universal formatter
-     neoscroll = true, -- smooth scroll
-     telescope_media = true, -- see media files in telescope picker
-     truezen = false, -- no distraction mode for nvim
-     vim_fugitive = true, -- git in nvim
-     vim_matchup = true, -- % magic, match it but improved
-     cmp=true,
-
-  --My Plugins
-     lightspeed = true,
-     termwrapper = false,
-     toggleterm = true,
---     fterm = true,
-     coq_nvim = false,
-     --if coq_nvim is true, set these to false
-  },
-  options = {
-   autosave = false, -- autosave on changed text or insert mode leave
-   -- timeout to be used for using escape with a key combination, see mappings.plugin.better_escape
-   esc_insertmode_timeout = 300,
-    lspconfig = {
-       setup_lspconf = "custom.plugins.lsp_setup",
-    },
-  },
+      --My Plugins
+      lightspeed = true,
+      termwrapper = false,
+      toggleterm = true,
+      --     fterm = true,
+      coq_nvim = false,
+      --if coq_nvim is true, set these to false
+   },
+   options = {
+      autosave = false, -- autosave on changed text or insert mode leave
+      -- timeout to be used for using escape with a key combination, see mappings.plugin.better_escape
+      esc_insertmode_timeout = 300,
+      lspconfig = {
+         setup_lspconf = "custom.plugins.lsp_setup",
+      },
+   },
 }
 
--- so setup_lspconf = "custom.plugins.lspconfig" as per our example 
+-- so setup_lspconf = "custom.plugins.lspconfig" as per our example
 
 -- mappings -- don't use a single keymap twice --
 -- non plugin mappings
