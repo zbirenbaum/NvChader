@@ -108,11 +108,13 @@ M.plugins = {
    autosave = false, -- autosave on changed text or insert mode leave
    -- timeout to be used for using escape with a key combination, see mappings.plugin.better_escape
    esc_insertmode_timeout = 300,
-  },
-  lspconfig = {
-    servers = {"pyright", "lua"},
+    lspconfig = {
+       setup_lspconf = "custom.plugins.lsp_setup",
+    },
   },
 }
+
+-- so setup_lspconf = "custom.plugins.lspconfig" as per our example 
 
 -- mappings -- don't use a single keymap twice --
 -- non plugin mappings
