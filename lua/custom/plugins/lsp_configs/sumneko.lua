@@ -45,4 +45,3 @@ M.setup_luaLsp = function(attach, capabilities)
 end
 
 return M
-

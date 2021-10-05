@@ -38,8 +38,8 @@ return packer.startup(function()
    use {
       "Nvchad/extensions",
    }
-   use{
-     "gennaro-tedesco/nvim-jqx",
+   use {
+      "gennaro-tedesco/nvim-jqx",
    }
 
    use {
@@ -128,27 +128,27 @@ return packer.startup(function()
       end,
       config = override_req("lspconfig", "plugins.configs.lspconfig"),
    }
---    use {
---      "ms-jpq/coq_nvim",
---       opt = true,
---       diable = not plugin_status.coq_nvim,
---       after = "nvim-lspconfig",
---       config = function()
---         require("plugins.configs.coq")
---         --vim.cmd('COQnow -s')
---       end,
---    }
--- 
---    use {
---      "ms-jpq/coq.artifacts",
---       opt = true,
---       diable = not plugin_status.coq_nvim,
---       after = "coq_nvim",
---       -- config = function()
---       --   require("plugins.configs.coq")
---       --   --vim.cmd('COQnow -s')
---       -- end,
---    }
+   --    use {
+   --      "ms-jpq/coq_nvim",
+   --       opt = true,
+   --       diable = not plugin_status.coq_nvim,
+   --       after = "nvim-lspconfig",
+   --       config = function()
+   --         require("plugins.configs.coq")
+   --         --vim.cmd('COQnow -s')
+   --       end,
+   --    }
+   --
+   --    use {
+   --      "ms-jpq/coq.artifacts",
+   --       opt = true,
+   --       diable = not plugin_status.coq_nvim,
+   --       after = "coq_nvim",
+   --       -- config = function()
+   --       --   require("plugins.configs.coq")
+   --       --   --vim.cmd('COQnow -s')
+   --       -- end,
+   --    }
    use {
       "ray-x/lsp_signature.nvim",
       disable = not status.lspsignature,
@@ -162,7 +162,7 @@ return packer.startup(function()
       opt = true,
       setup = function()
          require("core.utils").packer_lazy_load "vim-matchup"
-         vim.cmd([[let g:matchup_matchparen_offscreen = {'method': 'popup'}]])
+         vim.cmd [[let g:matchup_matchparen_offscreen = {'method': 'popup'}]]
       end,
    }
 
@@ -299,5 +299,5 @@ return packer.startup(function()
          require("core.mappings").truezen()
       end,
    }
-  require("core.hooks").run("install_plugins", use)
+   require("core.hooks").run("install_plugins", use)
 end)

@@ -228,6 +228,37 @@ M.plugins = {
       --     fterm = true,
       coq_nvim = false,
       --if coq_nvim is true, set these to false
+<<<<<<< HEAD
+=======
+   },
+   options = {
+      autosave = false, -- autosave on changed text or insert mode leave
+      -- timeout to be used for using escape with a key combination, see mappings.plugin.better_escape
+      esc_insertmode_timeout = 300,
+      lspconfig = {
+         setup_lspconf = "custom.plugins.lsp_setup",
+      },
+   },
+}
+
+-- so setup_lspconf = "custom.plugins.lspconfig" as per our example
+
+-- mappings -- don't use a single keymap twice --
+-- non plugin mappings
+M.mappings = {
+   -- close current focused buffer
+   close_buffer = "<leader>x",
+   copy_whole_file = "<C-a>", -- copy all contents of the current buffer
+
+   -- navigation in insert mode, only if enabled in options
+   insert_nav = {
+      backward = "<C-h>",
+      end_of_line = "<C-e>",
+      forward = "<C-l>",
+      next_line = "<C-k>",
+      prev_line = "<C-j>",
+      top_of_line = "<C-a>",
+>>>>>>> 5b0d2f6b33f7bdb1879cf06b43f4795df3014162
    },
    options = {
       autosave = false, -- autosave on changed text or insert mode leave

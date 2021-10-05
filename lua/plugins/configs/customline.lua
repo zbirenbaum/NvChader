@@ -1,7 +1,6 @@
 local colors = require("colors").get()
 local lsp = require "feline.providers.lsp"
 
-
 local icon_styles = {
    default = {
       left = "",
@@ -55,7 +54,7 @@ local components = {
 }
 
 components.left.active[1] = {
-  provider = function()
+   provider = function()
       local extension = vim.fn.expand "%:e"
       local filename = vim.fn.expand "%:t"
       local icon = require("nvim-web-devicons").get_icon(filename, extension)
@@ -63,7 +62,7 @@ components.left.active[1] = {
          icon = ""
       end
       return " " .. icon .. " "
-  end,
+   end,
    hl = {
       fg = colors.statusline_bg,
       bg = colors.nord_blue,
@@ -75,14 +74,14 @@ components.left.active[1] = {
    } },
 }
 components.left.active[2] = {
-  provider = function()
+   provider = function()
       local filename = vim.fn.expand "%:t"
       if next(vim.lsp.buf_get_clients()) ~= nil then
          return "  " .. filename .. " "
       else
          return " " .. filename .. " "
       end
-    end,
+   end,
    hl = {
       fg = colors.white,
       bg = colors.lightbg,
@@ -159,10 +158,13 @@ components.left.active[3] = {
       fg = colors.grey_fg2,
       bg = colors.lightbg2,
    },
-   right_sep = { str = statusline_style.right, hi = {
-      fg = colors.lightbg2,
-      bg = colors.statusline_bg,
-   } },
+   right_sep = {
+      str = statusline_style.right,
+      hi = {
+         fg = colors.lightbg2,
+         bg = colors.statusline_bg,
+      },
+   },
 }
 
 components.left.active[5] = {
@@ -219,8 +221,6 @@ components.mid.active[1] = {
    end,
    hl = { fg = colors.green },
 }
-
-
 
 -- components.right.active[3] = {
 --    provider = " " .. statusline_style.left,
@@ -323,13 +323,13 @@ components.right.active[7] = {
    hl = chad_mode_hl,
 }
 
- components.right.active[8] = {
-    provider = statusline_style.left,
-    hl = {
-       fg = colors.green,
-       bg = colors.one_bg,
-    },
- }
+components.right.active[8] = {
+   provider = statusline_style.left,
+   hl = {
+      fg = colors.green,
+      bg = colors.one_bg,
+   },
+}
 
 components.right.active[9] = {
    provider = statusline_style.position_icon,
@@ -365,7 +365,6 @@ components.right.active[10] = {
 --      bg = colors.one_bg,
 --   },
 --}
-
 
 require("feline").setup {
    default_bg = colors.statusline_bg,

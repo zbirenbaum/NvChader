@@ -88,7 +88,7 @@ M.signature = function()
       lspsignature.setup {
          bind = true,
          doc_lines = 2,
-         transparency=100,
+         transparency = 100,
          floating_window = true,
          fix_pos = true,
          hint_enable = true,
