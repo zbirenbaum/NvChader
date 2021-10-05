@@ -1,7 +1,7 @@
 -- IMPORTANT NOTE : This is the user config, can be edited. Will be preserved if updated with internal updater
 
-vim.g.python3_host_prog="/home/zach/.virtualenvs/py3nvim/bin/python"
-vim.g.python_host_prog="/home/zach/.virtualenvs/py2nvim/bin/python"
+vim.g.python3_host_prog = "/home/zach/.virtualenvs/py3nvim/bin/python"
+vim.g.python_host_prog = "/home/zach/.virtualenvs/py2nvim/bin/python"
 
 local M = {}
 --M.ui, M.options, M.plugin_status, M.mappings, M.custom = {}, {}, {}, {}, {}
@@ -154,72 +154,94 @@ M.ui = {
         new_vertical = "<leader>v",
         new_window = "<leader>w",
       },
-
-      -- update nvchad from nvchad, chadness 101
-      update_nvchad = "<leader>uu",
     }
+--    -- statusline related options
+--    statusline = {
+--       -- these are filetypes, not pattern matched
+--       -- if a filetype is present in shown, it will always show the statusline, irrespective of filetypes in hidden
+--       hidden = {},
+--       shown = {},
+--       -- default, round , slant , block , arrow
+--       style = "default",
+--    },
+-- }
 
-    -- all plugins related mappings
-    -- to get short info about a plugin, see the respective string in plugin_status, if not present, then info here
-    M.mappings.plugin = {
-      bufferline = {
-        next_buffer = "<TAB>", -- next buffer
-        prev_buffer = "<S-Tab>", -- previous buffer
-        --better window movement
-        moveLeft = "<C-h>",
-        moveRight = "<C-l>",
-        moveUp = "<C-k>",
-        moveDown = "<C-j>",
-      },
-      chadsheet = {
-        default_keys = "<leader>dk",
-        user_keys = "<leader>uk",
-      },
-      comment = {
-        toggle = "<leader>/", -- trigger comment on a single/selected lines/number prefix
-      },
-      dashboard = {
-        bookmarks = "<leader>bm",
-        new_file = "<leader>fn", -- basically create a new buffer
-        open = "<leader>db", -- open dashboard
-        session_load = "<leader>l", -- load a saved session
-        session_save = "<leader>s", -- save a session
-      },
-      -- note: this is an edditional mapping to escape, escape key will still work
-      better_escape = {
-        esc_insertmode = { "jk" }, -- multiple mappings allowed
-      },
-      nvimtree = {
-        toggle = "<C-n>", -- file manager
-      },
-      neoformat = {
-        format = "<leader>fm",
-      },
-      telescope = {
-        buffers = "<leader>fb",
-        find_files = "<leader>ff",
-        git_commits = "<leader>cm",
-        git_status = "<leader>gt",
-        help_tags = "<leader>fh",
-        live_grep = "<leader>fw",
-        oldfiles = "<leader>fo",
-        themes = "<leader>th",
-      },
-      telescope_media = {
-        media_files = "<leader>fp",
-      },
-      truezen = { -- distraction free modes mapping, hide statusline, tabline, line numbers
-      ataraxis_mode = "<leader>zz", -- center
-      focus_mode = "<leader>zf",
-      minimalistic_mode = "<leader>zm", -- as it is
-    },
-    vim_fugitive = {
-      diff_get_2 = "<leader>gh",
-      diff_get_3 = "<leader>gl",
-      git = "<leader>gs",
-      git_blame = "<leader>gb",
-    },
-  }
+-- non plugin normal, available without any plugins
+M.options = {
+   clipboard = "unnamedplus",
+   cmdheight = 1,
+   copy_cut = true, -- copy cut text ( x key ), visual and normal mode
+   copy_del = true, -- copy deleted text ( dd key ), visual and normal mode
+   expandtab = true,
+   hidden = true,
+   ignorecase = true,
+   insert_nav = true, -- navigation in insertmode
+   mapleader = " ",
+   mouse = "a",
+   number = true,
+   -- relative numbers in normal mode tool at the bottom of options.lua
+   numberwidth = 2,
+   permanent_undo = true,
+   shiftwidth = 2,
+   smartindent = true,
+   tabstop = 8, -- Number of spaces that a <Tab> in the file counts for
+   timeoutlen = 400,
+   relativenumber = true,
+   ruler = false,
+   updatetime = 250,
+   -- used for updater
+   update_url = "https://github.com/NvChad/NvChad",
+   update_branch = "main",
+}
 
+-- these are plugin related options
+
+-- enable and disable plugins (false for disable)
+M.plugins = {
+   plugin_status = {
+      autosave = false, -- to autosave files
+      blankline = true, -- beautified blank lines
+      bufferline = true, -- buffer shown as tabs
+      cheatsheet = true, -- fuzzy search your commands/keymappings
+      colorizer = true,
+      comment = true, -- universal commentor
+      dashboard = false, -- a nice looking dashboard
+      esc_insertmode = true, -- escape from insert mode using custom keys
+      feline = true, -- statusline
+      gitsigns = true, -- gitsigns in statusline
+
+      --if coq_nvim is true, set this to false
+      --   lspsignature = true, -- lsp enhancements
+
+      neoformat = true, -- universal formatter
+      neoscroll = true, -- smooth scroll
+      telescope_media = true, -- see media files in telescope picker
+      truezen = false, -- no distraction mode for nvim
+      vim_fugitive = true, -- git in nvim
+      vim_matchup = true, -- % magic, match it but improved
+      cmp = true,
+
+      --My Plugins
+      lightspeed = true,
+      termwrapper = false,
+      toggleterm = true,
+      --     fterm = true,
+      coq_nvim = false,
+      --if coq_nvim is true, set these to false
+   },
+   options = {
+      autosave = false, -- autosave on changed text or insert mode leave
+      -- timeout to be used for using escape with a key combination, see mappings.plugin.better_escape
+      esc_insertmode_timeout = 300,
+      lspconfig = {
+         setup_lspconf = "custom.plugins.lsp_setup",
+      },
+   },
+}
+
+-- so setup_lspconf = "custom.plugins.lspconfig" as per our example
+
+-- mappings -- don't use a single keymap twice --
+-- non plugin mappings
   local opt = {}
   return M
