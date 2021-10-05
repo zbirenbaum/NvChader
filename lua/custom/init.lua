@@ -33,8 +33,8 @@ hooks.add("install_plugins", function(use)
    }
 end)
 --hooks.add("setup_mappings", function(map)
-   -- map("n", "<C-x>", "<CMD>Ttoggle<CR>", opt) -- example to delete the buffer
-   -- map("t", "<C-x>", "<C-\\><C-n><CMD>Ttoggle<CR>", opt) -- example to delete the buffer
+-- map("n", "<C-x>", "<CMD>Ttoggle<CR>", opt) -- example to delete the buffer
+-- map("t", "<C-x>", "<C-\\><C-n><CMD>Ttoggle<CR>", opt) -- example to delete the buffer
 --end)
 
 -- use {
